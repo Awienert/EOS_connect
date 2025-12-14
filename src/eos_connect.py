@@ -592,7 +592,7 @@ def setting_control_data(ac_charge_demand_rel, dc_charge_demand_rel, discharge_a
     mqtt_interface.update_publish_topics(
         {
             "control/eos_ac_charge_demand": {
-                "value": base_control.get_current_ac_charge_demand()
+                "value": base_control.get_needed_ac_charge_power()
             },
             "control/eos_dc_charge_demand": {
                 "value": base_control.get_current_dc_charge_demand()
@@ -1133,10 +1133,12 @@ def change_control_state():
     tgt_ac_charge_power = min(
         base_control.get_needed_ac_charge_power(),
         round(battery_interface.get_max_charge_power()),
+        config_manager.config["inverter"]["max_grid_charge_rate"],
     )
     tgt_dc_charge_power = min(
         base_control.get_current_dc_charge_demand(),
         round(battery_interface.get_max_charge_power()),
+        config_manager.config["inverter"]["max_pv_charge_rate"],
     )
 
     base_control.set_current_bat_charge_max(
