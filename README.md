@@ -110,9 +110,10 @@ EOS Connect helps you get the most out of your solar and storage systems—wheth
   - Monitors and controls EVCC charging modes and states.
   - Supports fast charge, PV charging, and combined modes.
 - **Inverter Interfaces**:
-  - OPTION 1: Communicates directly with a Fronius GEN24 to monitor and control energy flows.
+  - OPTION 1: Communicates directly with Fronius GEN24 or Victron inverters to monitor and control energy flows.
     - `fronius_gen24`: Enhanced interface with firmware-based authentication for all firmware versions
     - `fronius_gen24_legacy`: Legacy interface for corner cases or troubleshooting
+    - `victron`: Full support for Victron Energy inverters
   - OPTION 2: Use the [evcc external battery control](https://docs.evcc.io/docs/integrations/rest-api) to interact with all inverter/ battery systems that [are supported by evcc](https://docs.evcc.io/en/docs/devices/meters) (hint: the dynamic max charge power is currently not supported by evcc external battery control)
   - OPTION 3: using without a direct control interface to get the resulting commands by **EOS connect** MQTT or web API to control within your own environment (e.g. [Integrate inverter e.g. sungrow SH10RT #35](https://github.com/ohAnd/EOS_connect/discussions/35)  )
   - Retrieves real-time data such as grid charge power, discharge power, and battery SOC.

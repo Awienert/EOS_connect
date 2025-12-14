@@ -10,7 +10,7 @@ import pytest
 from src.interfaces.battery_interface import BatteryInterface
 
 # Accessing protected members is fine in white-box tests.
-# pylint: disable=protected-access
+# pylint: disable=protected-access, redefined-outer-name
 
 
 @pytest.fixture
